@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
+    <title>Happy Birthday, Madhu! 🎉</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="birthday-title">🎉 Happy Birthday, Madhu❤️! 🎂</h1>
-        <button id="exploreBtn">Click Here to Explore</button>
+        <h1 class="birthday-title glow">🎉 Happy Birthday, Madhu ❤️! 🎂</h1>
+        <button id="exploreBtn" class="pulse">Click Here to Explore</button>
 
         <div id="memoriesSection" class="hidden">
-            <h2 class="memories-title">Beautiful Memories</h2>
+            <h2 class="memories-title fade-in">Beautiful Memories</h2>
             <div id="imageContainer" class="gallery"></div>
-            <button id="messageBtn">My Message</button>
+            <button id="messageBtn" class="shake">My Message</button>
         </div>
 
         <div id="messageSection" class="hidden">
-            <h2 class="message-title">A Special Message for You</h2>
+            <h2 class="message-title fade-in">A Special Message for You</h2>
             <p id="typingMessage"></p>
         </div>
     </div>
+
+    <!-- Confetti Animation -->
+    <canvas id="confettiCanvas"></canvas>
 
     <script src="script.js"></script>
 </body>
