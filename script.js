@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         memoriesSection.style.display = "none";
         messageSection.style.display = "block";
 
-        const messageText = "Happy bday di.💖 1st na Raj bro pathi sollidra. I am very happy that vunaku ipdi person kedachi irukaanga. He is too good and i hope this continues to eternity. And namba friendship also ipdiye irukanum. enaku Raj bro ku nalla vibr set aaguthu😂. ippo vunnaku varuvom. eppavum happy ah iru ethayum nanachi down aagatha ellame nallatha nadakum. ellame means ellame. again happy bday🫡✨";
+        const messageText = "Happy bday di.💖 1st na Raj bro pathi sollidra. I am very happy that vunaku ipdi oru person kedachi irukaanga. He is too good and i hope this continues to eternity. And namba friendship also ipdiye irukanum. enaku Raj bro ku nalla vibe set aaguthu😂. ippo vunnaku varuvom. eppavum happy ah iru ethayum nanachi down aagatha ellame nallatha nadakum. ellame means ellame. again happy bday🫡✨";
         typingEffect(messageText);
     });
 
