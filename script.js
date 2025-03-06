@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageContainer = document.getElementById("imageContainer");
     const typingMessage = document.getElementById("typingMessage");
 
-    // Updated Image List (Ensure they exist in "images/" folder)
+    // Updated Image List
     const imageFiles = [
         "images/IMG-20230126-WA0006.jpg",
         "images/IMG-20231017-WA0016.jpg",
@@ -33,13 +33,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Step 2: Load Images with Animation
     function loadImages() {
-        imageContainer.innerHTML = "";
+        imageContainer.innerHTML = ""; // Clear previous images
 
         imageFiles.forEach((file, index) => {
             let imgElement = document.createElement("img");
             imgElement.src = file;
             imgElement.classList.add("polaroid");
-            imgElement.style.animation = `fadeIn 1s ease-in-out ${index * 200}ms forwards`;
+            imgElement.style.animation = `fadeIn 0.8s ease-in-out ${index * 200}ms forwards`;
 
             imgElement.onerror = function () { 
                 this.style.display = "none"; 
@@ -58,17 +58,15 @@ document.addEventListener("DOMContentLoaded", function () {
         typingEffect(messageText);
     });
 
-    // Step 4: Typing Animation Effect (Smooth & Multi-line)
+    // Step 4: Smooth Typing Animation Effect
     function typingEffect(text) {
-        typingMessage.innerHTML = "";
+        typingMessage.innerHTML = ""; // Reset text
         let i = 0;
         function type() {
             if (i < text.length) {
                 typingMessage.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(type, 50); // Faster & smoother typing
-            } else {
-                typingMessage.style.borderRight = "none"; // Remove cursor when done
+                setTimeout(type, 50); // Faster and smoother typing effect
             }
         }
         type();
