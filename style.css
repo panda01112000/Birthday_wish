@@ -74,6 +74,7 @@ button:hover {
     margin-bottom: 20px;
 }
 
+/* Typing Effect */
 #typingMessage {
     font-size: 1.5rem;
     padding: 20px;
@@ -85,6 +86,7 @@ button:hover {
     display: inline-block;
     border-right: 3px solid white;
     white-space: pre-wrap; /* Ensures multi-line */
+    line-height: 1.5; /* Makes it look smooth */
 }
 
 /* Typing Cursor Animation */
