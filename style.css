@@ -124,3 +124,34 @@ balloon:nth-child(2) { left: 30%; animation-duration: 7s; background-color: yell
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
+
+/* Balloon Animation */
+.balloon {
+    position: absolute;
+    bottom: -100px; /* Start off-screen */
+    width: 80px; /* Adjust size */
+    animation: floatBalloon 8s ease-in-out infinite, swayBalloon 4s ease-in-out infinite alternate;
+    opacity: 0.8;
+}
+
+/* Floating Upwards */
+@keyframes floatBalloon {
+    0% {
+        transform: translateY(100vh); /* Start from bottom */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(-10vh); /* Move up */
+        opacity: 1;
+    }
+}
+
+/* Swaying Left & Right */
+@keyframes swayBalloon {
+    0% {
+        transform: translateX(-20px);
+    }
+    100% {
+        transform: translateX(20px);
+    }
+}
