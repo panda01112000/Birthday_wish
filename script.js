@@ -24,17 +24,34 @@ document.addEventListener("DOMContentLoaded", function () {
         "images/IMG_20241231_174120812.jpg"
     ];
 
-    // Step 1: Show Memories Section on Button Click
+    // Add balloons dynamically
+    function createBalloons() {
+        for (let i = 0; i < 5; i++) {
+            let balloon = document.createElement("div");
+            balloon.classList.add("balloon");
+            document.body.appendChild(balloon);
+        }
+    }
+
+    // Add glitter effect
+    function createGlitters() {
+        for (let i = 0; i < 10; i++) {
+            let glitter = document.createElement("div");
+            glitter.classList.add("glitter");
+            document.body.appendChild(glitter);
+        }
+    }
+
+    // Show Memories Section on Button Click
     exploreBtn.addEventListener("click", function () {
         exploreBtn.style.display = "none";
         memoriesSection.style.display = "block";
         loadImages();
     });
 
-    // Step 2: Load Images with Animation
+    // Load Images with Animation
     function loadImages() {
-        imageContainer.innerHTML = ""; // Clear previous images
-
+        imageContainer.innerHTML = "";
         imageFiles.forEach((file, index) => {
             let imgElement = document.createElement("img");
             imgElement.src = file;
@@ -49,26 +66,29 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Step 3: Show Typing Effect for Message
+    // Show Typing Effect for Message
     messageBtn.addEventListener("click", function () {
         memoriesSection.style.display = "none";
         messageSection.style.display = "block";
 
-        const messageText = "Happy bday di.💖 1st na Raj bro pathi sollidra. I am very happy that vunaku ipdi oru person kedachi irukaanga. He is too good and i hope this continues to eternity. And namba friendship also ipdiye irukanum. enaku Raj bro ku nalla vibe set aaguthu😂. ippo vunnaku varuvom. eppavum happy ah iru ethayum nanachi down aagatha ellame nallatha nadakum. ellame means ellame. again happy bday🫡✨";
+        const messageText = "Happy bday di.💖 1st na Raj bro pathi sollidra. I am very happy that vunaku ipdi person kedachi irukaanga. He is too good and i hope this continues to eternity. And namba friendship also ipdiye irukanum. enaku Raj bro ku nalla vibe set aaguthu😂. ippo vunnaku varuvom. eppavum happy ah iru ethayum nanachi down aagatha ellame nallatha nadakum. ellame means ellame. again happy bday🫡✨";
         typingEffect(messageText);
     });
 
-    // Step 4: Smooth Typing Animation Effect
+    // Smooth Typing Animation
     function typingEffect(text) {
-        typingMessage.innerHTML = ""; // Reset text
+        typingMessage.innerHTML = "";
         let i = 0;
         function type() {
             if (i < text.length) {
                 typingMessage.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(type, 50); // Faster and smoother typing effect
+                setTimeout(type, 50);
             }
         }
         type();
     }
+
+    createBalloons();
+    createGlitters();
 });
