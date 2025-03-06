@@ -129,3 +129,20 @@ document.addEventListener("DOMContentLoaded", function () {
     createBalloons();
     createGlitters();
 });
+
+document.getElementById("exploreBtn").addEventListener("click", function () {
+    const audio = document.getElementById("birthdaySong");
+    audio.volume = 0; // Start at 0 volume
+    audio.play();
+    
+    let volume = 0;
+    let fadeIn = setInterval(function () {
+        if (volume < 1) {
+            volume += 0.1;
+            audio.volume = volume;
+        } else {
+            clearInterval(fadeIn);
+        }
+    }, 300); // Increases volume every 300ms
+});
+
