@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const messageSection = document.getElementById("messageSection");
     const imageContainer = document.getElementById("imageContainer");
     const typingMessage = document.getElementById("typingMessage");
+    const body = document.body;
 
     // Updated Image List
     const imageFiles = [
@@ -48,6 +49,28 @@ document.addEventListener("DOMContentLoaded", function () {
         memoriesSection.style.display = "block";
         loadImages();
     });
+
+    function createBalloon() {
+        const balloon = document.createElement("div");
+        balloon.classList.add("balloon");
+        balloon.style.left = Math.random() * 100 + "vw"; // Random horizontal position
+        balloon.style.animationDuration = (Math.random() * 5 + 6) + "s"; // Random floating speed
+        balloon.style.animationDelay = Math.random() * 2 + "s"; // Random start delay
+
+        // Random balloon colors
+        const colors = ["#ff6384", "#ff9f40", "#ffcd56", "#4bc0c0", "#36a2eb", "#9966ff"];
+        balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+        body.appendChild(balloon);
+
+        // Remove balloon after animation
+        setTimeout(() => {
+            balloon.remove();
+        }, 8000);
+    }
+
+    // Generate balloons at random intervals
+    setInterval(createBalloon, 1000);
 
     // Load Images with Animation
     function loadImages() {
