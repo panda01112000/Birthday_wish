@@ -125,33 +125,47 @@ balloon:nth-child(2) { left: 30%; animation-duration: 7s; background-color: yell
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-/* Balloon Animation */
-.balloon {
-    position: absolute;
-    bottom: -100px; /* Start off-screen */
-    width: 80px; /* Adjust size */
-    animation: floatBalloon 8s ease-in-out infinite, swayBalloon 4s ease-in-out infinite alternate;
-    opacity: 0.8;
+/* Container to prevent overflow issues */
+body {
+    overflow: hidden;
 }
 
-/* Floating Upwards */
-@keyframes floatBalloon {
+/* Balloon Base */
+.balloon {
+    position: absolute;
+    bottom: -150px; /* Start off-screen */
+    width: 60px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 10%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.9;
+    filter: blur(1px);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
+    animation: floatUp 10s linear infinite, swaySide 4s ease-in-out infinite alternate;
+}
+
+/* Balloon Floating Animation */
+@keyframes floatUp {
     0% {
-        transform: translateY(100vh); /* Start from bottom */
+        transform: translateY(100vh) scale(0.8);
         opacity: 0;
     }
     100% {
-        transform: translateY(-10vh); /* Move up */
+        transform: translateY(-10vh) scale(1.2);
         opacity: 1;
     }
 }
 
-/* Swaying Left & Right */
-@keyframes swayBalloon {
-    0% {
-        transform: translateX(-20px);
-    }
-    100% {
-        transform: translateX(20px);
-    }
+/* Side-to-Side Swaying */
+@keyframes swaySide {
+    0% { transform: translateX(-20px) rotate(-5deg); }
+    100% { transform: translateX(20px) rotate(5deg); }
 }
+
+/* Glowing Shimmer Effect */
+@keyframes shimmer {
+    0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 15px rgba(255, 255, 255, 1); }
+    100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+}
+
