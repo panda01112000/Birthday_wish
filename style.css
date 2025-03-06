@@ -8,6 +8,7 @@ body {
     color: white;
     overflow-x: hidden;
     position: relative;
+    overflow-y: auto;
 }
 
 /* Birthday Title */
@@ -40,6 +41,30 @@ button {
 button:hover {
     background-color: #e63946;
     transform: scale(1.1);
+}
+
+#memoriesSection {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-height: 100vh; /* Ensures it fits the screen */
+    overflow-y: auto; /* Allows scrolling when images are loaded */
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-height: 80vh; /* Ensures images don’t overflow */
+    overflow-y: auto; /* Allows scrolling if too many images */
+}
+
+/* Ensure buttons remain visible and accessible */
+#messageBtn {
+    position: relative;
+    margin-top: 20px; /* Keeps button visible even after images */
 }
 
 /* Balloons Floating */
