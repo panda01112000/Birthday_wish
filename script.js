@@ -53,22 +53,22 @@ document.addEventListener("DOMContentLoaded", function () {
     function createBalloon() {
         const balloon = document.createElement("div");
         balloon.classList.add("balloon");
-        balloon.style.left = Math.random() * 100 + "vw"; // Random horizontal position
-        balloon.style.animationDuration = (Math.random() * 5 + 8) + "s"; // Random floating speed
-        balloon.style.animationDelay = Math.random() * 3 + "s"; // Random start delay
+        balloon.style.left = Math.random() * 80 + "vw"; // Random left position within 80% width
+        balloon.style.animationDuration = (Math.random() * 3 + 6) + "s"; // Between 6s to 9s float time
+        balloon.style.animationDelay = Math.random() * 2 + "s"; // Small delay to avoid same start time
 
-        // Randomized balloon sizes for depth effect
-        let size = Math.random() * 20 + 60; // Between 60px and 80px
-        balloon.style.width = size + "px";
-        balloon.style.height = (size + 20) + "px"; // Slightly taller for a real look
-
-        // Random balloon colors
+        // Balloon Colors
         const colors = ["#ff6384", "#ff9f40", "#ffcd56", "#4bc0c0", "#36a2eb", "#9966ff"];
         balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
+        // Randomized balloon sizes for a depth effect
+        let size = Math.random() * 20 + 60; // Between 60px and 80px
+        balloon.style.width = size + "px";
+        balloon.style.height = (size + 20) + "px"; // Slightly taller
+
         // Add shimmering effect randomly
         if (Math.random() > 0.5) {
-            balloon.style.animation = "floatUp 10s linear infinite, swaySide 4s ease-in-out infinite alternate, shimmer 3s infinite alternate";
+            balloon.style.animation = "floatUp 8s linear infinite, swaySide 5s ease-in-out infinite alternate, shimmer 3s infinite alternate";
         }
 
         body.appendChild(balloon);
@@ -76,11 +76,15 @@ document.addEventListener("DOMContentLoaded", function () {
         // Remove balloon after animation
         setTimeout(() => {
             balloon.remove();
-        }, 10000);
-      }
+        }, 9000);
+    }
 
     // Generate balloons at random intervals
-    setInterval(createBalloon, 700);
+    setInterval(() => {
+        if (document.querySelectorAll(".balloon").length < 3) {
+            createBalloon();
+        }
+    }, 3000);
 
     // Load Images with Animation
     function loadImages() {
