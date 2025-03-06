@@ -6,10 +6,11 @@ body {
     text-align: center;
     background: linear-gradient(135deg, #ff9a9e, #fad0c4);
     color: white;
+    overflow-x: hidden;
 }
 
 /* Glowing Header */
-.glow {
+.birthday-title {
     font-size: 3rem;
     text-shadow: 0 0 10px white;
     animation: glow 1.5s infinite alternate;
@@ -20,7 +21,7 @@ body {
     to { text-shadow: 0 0 20px yellow; }
 }
 
-/* Button Animations */
+/* Button Styles */
 button {
     background: #ff6f61;
     color: white;
@@ -36,7 +37,7 @@ button:hover {
     background-color: #e63946;
 }
 
-/* Pulse Animation */
+/* Button Animations */
 .pulse {
     animation: pulse 1.5s infinite;
 }
@@ -47,34 +48,69 @@ button:hover {
     100% { transform: scale(1); }
 }
 
-/* Shake Button */
 .shake {
-    animation: shake 1s infinite alternate;
+    animation: shake 0.5s infinite alternate;
 }
 
 @keyframes shake {
     from { transform: rotate(0); }
-    to { transform: rotate(2deg); }
+    to { transform: rotate(3deg); }
 }
 
 /* Image Gallery */
 .hidden { display: none; }
 
-.image-container {
+.gallery {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
+    padding: 20px;
 }
 
-/* Floating Balloon Animation */
-.balloon {
-    position: absolute;
-    bottom: -50px;
-    animation: float 6s infinite;
+.gallery img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(0);
+    animation: fadeInScale 1s forwards;
 }
 
-@keyframes float {
-    0% { transform: translateY(100vh); opacity: 0; }
-    100% { transform: translateY(-10vh); opacity: 1; }
+@keyframes fadeInScale {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Typing Effect */
+#typingMessage {
+    font-size: 1.5rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white;
+    width: 0;
+    animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: white; }
+}
+
+/* Confetti Canvas */
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
 }
