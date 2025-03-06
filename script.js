@@ -54,23 +54,33 @@ document.addEventListener("DOMContentLoaded", function () {
         const balloon = document.createElement("div");
         balloon.classList.add("balloon");
         balloon.style.left = Math.random() * 100 + "vw"; // Random horizontal position
-        balloon.style.animationDuration = (Math.random() * 5 + 6) + "s"; // Random floating speed
-        balloon.style.animationDelay = Math.random() * 2 + "s"; // Random start delay
+        balloon.style.animationDuration = (Math.random() * 5 + 8) + "s"; // Random floating speed
+        balloon.style.animationDelay = Math.random() * 3 + "s"; // Random start delay
+
+        // Randomized balloon sizes for depth effect
+        let size = Math.random() * 20 + 60; // Between 60px and 80px
+        balloon.style.width = size + "px";
+        balloon.style.height = (size + 20) + "px"; // Slightly taller for a real look
 
         // Random balloon colors
         const colors = ["#ff6384", "#ff9f40", "#ffcd56", "#4bc0c0", "#36a2eb", "#9966ff"];
         balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+        // Add shimmering effect randomly
+        if (Math.random() > 0.5) {
+            balloon.style.animation = "floatUp 10s linear infinite, swaySide 4s ease-in-out infinite alternate, shimmer 3s infinite alternate";
+        }
 
         body.appendChild(balloon);
 
         // Remove balloon after animation
         setTimeout(() => {
             balloon.remove();
-        }, 8000);
-    }
+        }, 10000);
+      }
 
     // Generate balloons at random intervals
-    setInterval(createBalloon, 1000);
+    setInterval(createBalloon, 700);
 
     // Load Images with Animation
     function loadImages() {
