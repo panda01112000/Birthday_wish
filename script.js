@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageContainer = document.getElementById("imageContainer");
     const typingMessage = document.getElementById("typingMessage");
 
-    // Updated Image List
+    // Updated Image List (Ensure they exist in "images/" folder)
     const imageFiles = [
         "images/IMG-20230126-WA0006.jpg",
         "images/IMG-20231017-WA0016.jpg",
@@ -24,36 +24,41 @@ document.addEventListener("DOMContentLoaded", function () {
         "images/IMG_20241231_174120812.jpg"
     ];
 
-    // Show Memories Section
+    // Step 1: Show Memories Section on Button Click
     exploreBtn.addEventListener("click", function () {
         exploreBtn.style.display = "none";
         memoriesSection.style.display = "block";
-        startConfetti();
         loadImages();
     });
 
-    // Load Images with Animation
+    // Step 2: Load Images with Animation
     function loadImages() {
         imageContainer.innerHTML = "";
 
         imageFiles.forEach((file, index) => {
             let imgElement = document.createElement("img");
             imgElement.src = file;
-            imgElement.classList.add("fade-in");
-            imgElement.style.animationDelay = `${index * 300}ms`;
-            imgElement.onerror = function () { this.style.display = "none"; };
+            imgElement.classList.add("polaroid");
+            imgElement.style.animation = `fadeIn 1s ease-in-out ${index * 200}ms forwards`;
+
+            imgElement.onerror = function () { 
+                this.style.display = "none"; 
+            };
+
             imageContainer.appendChild(imgElement);
         });
     }
 
-    // Show Typing Message
+    // Step 3: Show Typing Effect for Message
     messageBtn.addEventListener("click", function () {
         memoriesSection.style.display = "none";
         messageSection.style.display = "block";
-        typingEffect("Happy bday di.💖 1st na Raj bro pathi sollidra. I am very happy that vunaku ipdi person kedachi irukaanga. He is too good and i hope this continues to eternity. And namba friendship also ipdiye irukanum. enaku Raj bro ku nalla vibr set aaguthu😂. ippo vunnaku varuvom. eppavum happy ah iru ethayum nanachi down aagatha ellame nallatha nadakum. ellame means ellame. again happy bday🫡✨");
+
+        const messageText = "Happy bday di.💖 1st na Raj bro pathi sollidra. I am very happy that vunaku ipdi person kedachi irukaanga. He is too good and i hope this continues to eternity. And namba friendship also ipdiye irukanum. enaku Raj bro ku nalla vibr set aaguthu😂. ippo vunnaku varuvom. eppavum happy ah iru ethayum nanachi down aagatha ellame nallatha nadakum. ellame means ellame. again happy bday🫡✨";
+        typingEffect(messageText);
     });
 
-    // Typing Effect Function
+    // Step 4: Typing Animation Effect (Smooth & Multi-line)
     function typingEffect(text) {
         typingMessage.innerHTML = "";
         let i = 0;
@@ -61,38 +66,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (i < text.length) {
                 typingMessage.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(type, 100);
+                setTimeout(type, 50); // Faster & smoother typing
+            } else {
+                typingMessage.style.borderRight = "none"; // Remove cursor when done
             }
         }
         type();
-    }
-
-    // Confetti Animation
-    function startConfetti() {
-        const confettiCanvas = document.getElementById("confettiCanvas");
-        const ctx = confettiCanvas.getContext("2d");
-        confettiCanvas.width = window.innerWidth;
-        confettiCanvas.height = window.innerHeight;
-
-        const confettiPieces = Array.from({ length: 100 }, () => ({
-            x: Math.random() * confettiCanvas.width,
-            y: Math.random() * confettiCanvas.height,
-            size: Math.random() * 5 + 2,
-            speed: Math.random() * 3 + 1,
-            color: `hsl(${Math.random() * 360}, 100%, 50%)`
-        }));
-
-        function animateConfetti() {
-            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-            confettiPieces.forEach(p => {
-                p.y += p.speed;
-                if (p.y > confettiCanvas.height) p.y = 0;
-                ctx.fillStyle = p.color;
-                ctx.fillRect(p.x, p.y, p.size, p.size);
-            });
-            requestAnimationFrame(animateConfetti);
-        }
-
-        animateConfetti();
     }
 });
